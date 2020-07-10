@@ -14,17 +14,18 @@
 				</div>
 
 		</div>
-
+		<br><br><br>
+		Date Filter: <input type="text" class="datepicker" value="">
+		<br><br><br>
 		@if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
    		 @endif
+   		 <table class="table table-bordered " id="blogstbl" style="width:100%">
 
-   		 <table class="table">
 			  <thead>
 			    <tr>
-			      <th>Sr.No</th>
 			      <th>Name</th>
 			      <th>Created Date</th>
 			      <th>Actions</th>
@@ -37,7 +38,6 @@
 			  <tbody>
 			  	@foreach($blogs as $valb)
 			    <tr>
-			      <td>{{ $counter++ }}</th>
 			      <td>{{ $valb->title }}</td>
 			      <td>{{ date('d/m/Y',strtotime($valb->created_at)) }}</td>
 			      <td><a href="{{ route('blogs.edit',$valb->id) }}">Edit</a> | <a href="{{ route('blogs.show',$valb->id) }}">View</a> | <form action="{{ route('blogs.destroy',$valb->id) }}" method="POST"> @csrf
